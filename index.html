@@ -1,0 +1,1642 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thabiso Motswagole | Founder, CEO of Jurifica & Full-Stack Architect</title>
+    <meta name="description"
+        content="The official portfolio of Thabiso Motswagole, a Forbes 30 Under 30 winning founder and enterprise IT architect. Discover his work building innovative AI-powered companies like Jurifica, his projects, and his track record of entrepreneurial success.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Thabiso Motswagole | Founder & Tech Visionary">
+    <meta property="og:description"
+        content="The official portfolio of Thabiso Motswagole, a Forbes 30 Under 30 winning founder building the future of AI and legal tech with Jurifica.">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Thabiso Motswagole | Founder & Tech Visionary">
+    <meta property="twitter:description"
+        content="The official portfolio of Thabiso Motswagole, a Forbes 30 Under 30 winning founder building the future of AI and legal tech with Jurifica.">
+
+    <!-- <script src="script.js"></script> -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link target="_blank" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        rel="stylesheet">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --glass-light: rgba(255, 255, 255, 0.1);
+            --glass-dark: rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Theme Colors */
+        .light {
+            background-color: #ffffff;
+            color: #1a1a1a;
+        }
+
+        .dark {
+            background-color: #0f0f23;
+            color: #ffffff;
+        }
+
+        /* Glass morphism effects */
+        .glass {
+            background: var(--glass-light);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .dark .glass {
+            background: var(--glass-dark);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Navigation */
+        .nav-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem 2rem;
+            border-radius: 20px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            color: inherit;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-gradient);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile Menu Overlay */
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(255, 255, 255, 0.98);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transform: scale(0);
+            transform-origin: center;
+            transition: opacity 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+                transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+                visibility 0s 0.5s;
+            border-radius: 50%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .dark .mobile-menu-overlay {
+            background: rgba(15, 15, 35, 0.98);
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(3);
+            border-radius: 0%;
+            transition: opacity 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+                transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+                border-radius 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+                visibility 0s 0s;
+        }
+
+        .mobile-nav-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+            transform: translateY(30px);
+            opacity: 0;
+            transition: transform 0.5s ease 0.2s, opacity 0.5s ease 0.2s;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .mobile-menu-overlay.active .mobile-nav-links {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .mobile-nav-links li {
+            margin: 2% 0;
+        }
+
+        .mobile-nav-links a {
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+            display: block;
+            padding: 3%;
+        }
+
+        .mobile-nav-links a:hover {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            transform: scale(1.1);
+        }
+
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .locale-select {
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            border: 2px solid rgba(102, 126, 234, 0.3);
+            background: var(--glass-light);
+            backdrop-filter: blur(10px);
+            color: inherit;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dark .locale-select {
+            background: var(--glass-dark);
+            border-color: rgba(167, 139, 250, 0.3);
+        }
+
+        .locale-select:hover {
+            border-color: #667eea;
+            transform: translateY(-1px);
+        }
+
+        .theme-toggle {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            border: 2px solid rgba(102, 126, 234, 0.3);
+            background: var(--glass-light);
+            backdrop-filter: blur(10px);
+            color: inherit;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .dark .theme-toggle {
+            background: var(--glass-dark);
+            border-color: rgba(167, 139, 250, 0.3);
+        }
+
+        .theme-toggle:hover {
+            border-color: #667eea;
+            transform: translateY(-1px);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(circle at 50% 50%, rgba(102, 126, 234, 0.05) 0%, transparent 70%);
+        }
+
+        .dark .hero-section {
+            background: radial-gradient(circle at 50% 50%, rgba(167, 139, 250, 0.05) 0%, transparent 70%);
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 20;
+            position: relative;
+            max-width: 900px;
+            padding: 0 2rem;
+        }
+
+        /* Update profile image size */
+        .profile-image-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 0 auto 2rem auto;
+        }
+
+        .profile-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            padding: 4px;
+            position: relative;
+            animation: profileFloat 6s ease-in-out infinite;
+        }
+
+        .profile-inner {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            /* background: #f0f0f0; */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            /* color: #666; */
+            overflow: hidden;
+        }
+
+        .dark .profile-inner {
+            /* background: #2a2a2a; */
+            /* color: #999; */
+        }
+
+        @keyframes profileFloat {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Floating Words */
+        .floating-words-container {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .floating-word {
+            position: absolute;
+            padding: 0.5rem 1rem;
+            background: var(--glass-light);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #667eea;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            white-space: nowrap;
+            opacity: 0;
+            animation: floatingWordAnimation 8s ease-in-out infinite;
+        }
+
+        .dark .floating-word {
+            background: var(--glass-dark);
+            color: #a78bfa;
+            border-color: rgba(167, 139, 250, 0.2);
+        }
+
+        @keyframes floatingWordAnimation {
+
+            0%,
+            100% {
+                opacity: 0;
+                transform: scale(0.8) translateY(20px);
+            }
+
+            10%,
+            90% {
+                opacity: 1;
+                transform: scale(1) translateY(0px);
+            }
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            opacity: 0.8;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            background: var(--primary-gradient);
+            color: white;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0 0.5rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-secondary {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            background: transparent;
+            color: #667eea;
+            border: 2px solid #667eea;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0 0.5rem;
+        }
+
+        .btn-secondary:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .section-alt {
+            background: rgba(102, 126, 234, 0.02);
+        }
+
+        .dark .section-alt {
+            background: rgba(167, 139, 250, 0.02);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            text-align: center;
+            opacity: 0.7;
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            margin-top: 4rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 2rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary-gradient);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding-left: 5rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 1.5rem;
+            top: 1.5rem;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background: var(--primary-gradient);
+        }
+
+        .timeline-card {
+            padding: 2rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-card:hover {
+            transform: translateY(-4px);
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            padding: 2rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .tech-tag {
+            padding: 0.3rem 0.8rem;
+            background: var(--primary-gradient);
+            color: white;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Filter Buttons */
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .filter-btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            border: 2px solid #667eea;
+            background: transparent;
+            color: #667eea;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--primary-gradient);
+            color: white;
+            border-color: transparent;
+        }
+
+        /* Recognition Cards */
+        .recognition-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .recognition-card {
+            padding: 2rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .recognition-card:hover {
+            transform: translateY(-4px);
+        }
+
+        /* Footer */
+        .footer {
+            background: #0f0f23;
+            color: white;
+            padding: 4rem 0 2rem 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .footer-item {
+            padding: 1.5rem;
+        }
+
+        .footer-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            background: var(--primary-gradient);
+            margin: 0 auto 1rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        /* Mobile Navigation */
+        /* Hamburger Menu Styles */
+        .hamburger-lines {
+            display: none;
+            height: 26px;
+            width: 32px;
+            cursor: pointer;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 1001;
+            position: relative;
+        }
+
+        .hamburger-lines .line {
+            display: block;
+            height: 3px;
+            width: 100%;
+            border-radius: 10px;
+            background: currentColor;
+            transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55), opacity 0.3s ease;
+        }
+
+        .hamburger-lines.active .line1 {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger-lines.active .line2 {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+
+        .hamburger-lines.active .line3 {
+            transform: rotate(-45deg) translate(8px, -8px);
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .profile-image-container {
+                width: 350px;
+                height: 350px;
+            }
+
+            .profile-image {
+                width: 350px;
+                height: 350px;
+            }
+        }
+
+        @media (min-width: 1025px) {
+            .profile-image-container {
+                width: 400px;
+                height: 400px;
+            }
+
+            .profile-image {
+                width: 400px;
+                height: 400px;
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .profile-inner {
+                font-size: 3rem;
+                width: 100%;
+                height: 100%;
+            }
+
+            .timeline::before {
+                left: 1rem;
+            }
+
+            .timeline-item {
+                padding-left: 3rem;
+            }
+
+            .timeline-item::before {
+                left: 0.5rem;
+            }
+
+            .hamburger-lines {
+                display: flex;
+            }
+
+            .profile-image-container {
+                width: 250px;
+                height: 250px;
+            }
+
+            .profile-image {
+                width: 250px;
+                height: 250px;
+            }
+        }
+
+        /* Smooth transitions */
+        * {
+            transition: color 0.3s ease, background-color 0.3s ease;
+        }
+
+        /* Utility classes */
+        .gradient-text {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .text-muted {
+            opacity: 0.7;
+        }
+    </style>
+</head>
+
+<body class="light">
+    <!-- Navigation -->
+    <nav class="nav-container">
+        <div class="nav-content glass">
+            <div class="logo">TM</div>
+
+            <ul class="nav-links">
+                <li><a href="#experience" data-en="Experience" data-fr="Expérience" data-es="Experiencia">Experience</a>
+                </li>
+                <li><a href="#projects" data-en="Projects" data-fr="Projets" data-es="Proyectos">Projects</a></li>
+                <li><a href="#recognition" data-en="Recognition" data-fr="Reconnaissance"
+                        data-es="Reconocimiento">Recognition</a></li>
+                <li><a href="#contact" data-en="Contact" data-fr="Contact" data-es="Contacto">Contact</a></li>
+            </ul>
+
+            <div class="nav-controls">
+                <select class="locale-select" id="locale-select">
+                    <option value="en">EN</option>
+                    <option value="fr">FR</option>
+                    <option value="es">ES</option>
+                </select>
+
+                <button class="theme-toggle" id="theme-toggle">
+                    <i class="fas fa-sun theme-icon-light"></i>
+                    <i class="fas fa-moon theme-icon-dark" style="display: none;"></i>
+                </button>
+
+                <!-- Hamburger Menu -->
+                <div class="hamburger-lines" id="hamburger-menu">
+                    <span class="line line1"></span>
+                    <span class="line line2"></span>
+                    <span class="line line3"></span>
+                </div>
+
+                <!-- Mobile Menu Overlay -->
+                <div class="mobile-menu-overlay" id="mobile-overlay">
+                    <ul class="mobile-nav-links">
+                        <li><a href="#experience" data-en="Experience" data-fr="Expérience"
+                                data-es="Experiencia">Experience</a></li>
+                        <li><a href="#projects" data-en="Projects" data-fr="Projets" data-es="Proyectos">Projects</a>
+                        </li>
+                        <li><a href="#recognition" data-en="Recognition" data-fr="Reconnaissance"
+                                data-es="Reconocimiento">Recognition</a></li>
+                        <li><a href="#contact" data-en="Contact" data-fr="Contact" data-es="Contacto">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="floating-words-container" id="floating-words"></div>
+
+        <div class="hero-content">
+            <div class="profile-image-container">
+                <div class="profile-image">
+                    <div class="profile-inner">
+                        <img src="./img/profile.png" alt="Profile Image">
+                    </div>
+                </div>
+            </div>
+
+            <h1 class="hero-title" data-en="Thabiso Motswagole" data-fr="Thabiso Motswagole"
+                data-es="Thabiso Motswagole">
+                Thabiso Motswagole
+            </h1>
+
+            <p class="hero-subtitle"
+                data-en="Founder. Builder. Architect. I turn bold ideas into market-defining technology."
+                data-fr="Fondateur. Créateur. Architecte. Je transforme des idées audacieuses en technologie définissant le marché."
+                data-es="Fundador. Constructor. Arquitecto. Convierto ideas audaces en tecnología que define el mercado.">
+                Founder. Builder. Architect. I turn bold ideas into market-defining technology.
+            </p>
+
+            <div>
+                <button class="btn-primary"
+                    onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})">
+                    <span data-en="View My Work" data-fr="Voir Mon Travail" data-es="Ver Mi Trabajo">View My Work</span>
+                </button>
+                <button class="btn-secondary"
+                    onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
+                    <span data-en="Get In Touch" data-fr="Prendre Contact" data-es="Ponerse en Contacto">Get In
+                        Touch</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section section-alt">
+        <div class="container">
+            <h2 class="section-title" data-en="My Journey: From Code to Company"
+                data-fr="Mon Parcours: Du Code à l'Entreprise" data-es="Mi Viaje: Del Código a la Empresa">
+                My Journey: From Code to Company
+            </h2>
+
+            <div class="timeline">
+                <!-- JURIFICA -->
+                <div class="timeline-item">
+                    <div class="timeline-card glass">
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                            <div>
+                                <h3 class="gradient-text" style="font-size: 1.8rem; font-weight: 700;">JURIFICA</h3>
+                                <h4 style="font-size: 1.2rem; font-weight: 600; margin: 0.5rem 0;"
+                                    data-en="Co-Founder & CEO" data-fr="Co-Fondateur & PDG" data-es="Co-Fundador & CEO">
+                                    Co-Founder & CEO</h4>
+                            </div>
+                            <span class="text-muted" style="font-size: 0.9rem;">Jan 2025 - Present</span>
+                        </div>
+                        <p style="margin-bottom: 1.5rem;"
+                            data-en="Leading the charge to solve the massive problem of global legal compliance. For startups and SMBs, international expansion is a minefield of slow, expensive legal work and dangerously risky online templates."
+                            data-fr="Menant la charge pour résoudre le problème massif de la conformité juridique mondiale. Pour les startups et PME, l'expansion internationale est un champ de mines de travail juridique lent et coûteux."
+                            data-es="Liderando la carga para resolver el problema masivo del cumplimiento legal global. Para startups y PYMES, la expansión internacional es un campo minado de trabajo legal lento y costoso.">
+                            Leading the charge to solve the massive problem of global legal compliance. For startups and
+                            SMBs, international expansion is a minefield of slow, expensive legal work and dangerously
+                            risky online templates.
+                        </p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">AI/ML</span>
+                            <span class="tech-tag">Next.js</span>
+                            <span class="tech-tag">Stripe</span>
+                            <span class="tech-tag">Supabase</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AURORA MEDIA GROUP -->
+                <div class="timeline-item">
+                    <div class="timeline-card glass">
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                            <div>
+                                <h3 class="gradient-text" style="font-size: 1.8rem; font-weight: 700;">AURORA MEDIA
+                                    GROUP</h3>
+                                <h4 style="font-size: 1.2rem; font-weight: 600; margin: 0.5rem 0;"
+                                    data-en="Co-Founder & Chief Innovation Officer"
+                                    data-fr="Co-Fondateur & Directeur de l'Innovation"
+                                    data-es="Co-Fundador & Director de Innovación">Co-Founder & Chief Innovation Officer
+                                </h4>
+                            </div>
+                            <span class="text-muted" style="font-size: 0.9rem;">Nov 2022 - Jan 2025</span>
+                        </div>
+                        <p style="margin-bottom: 1rem;"
+                            data-en="Transformed a bold idea into a globally recognized, Techstars-backed venture. Secured elite validation through Techstars Founder Catalyst '23 and Nvidia Inception Program."
+                            data-fr="Transformé une idée audacieuse en une entreprise mondialement reconnue et soutenue par Techstars."
+                            data-es="Transformé una idea audaz en una empresa globalmente reconocida respaldada por Techstars.">
+                            Transformed a bold idea into a globally recognized, Techstars-backed venture. Secured elite
+                            validation through Techstars Founder Catalyst '23 and Nvidia Inception Program.
+                        </p>
+                        <div
+                            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+                            <div
+                                style="text-align: center; padding: 1rem; background: rgba(102, 126, 234, 0.1); border-radius: 10px;">
+                                <div style="font-size: 1.5rem; font-weight: 700; color: #667eea;">$500K+</div>
+                                <div style="font-size: 0.8rem; opacity: 0.7;" data-en="Resources Unlocked"
+                                    data-fr="Ressources Débloquées" data-es="Recursos Desbloqueados">Resources Unlocked
+                                </div>
+                            </div>
+                            <div
+                                style="text-align: center; padding: 1rem; background: rgba(102, 126, 234, 0.1); border-radius: 10px;">
+                                <div style="font-size: 1.5rem; font-weight: 700; color: #667eea;">2</div>
+                                <div style="font-size: 0.8rem; opacity: 0.7;" data-en="Elite Programs"
+                                    data-fr="Programmes d'Elite" data-es="Programas de Elite">Elite Programs</div>
+                            </div>
+                            <div
+                                style="text-align: center; padding: 1rem; background: rgba(102, 126, 234, 0.1); border-radius: 10px;">
+                                <div style="font-size: 1.5rem; font-weight: 700; color: #667eea;">Global</div>
+                                <div style="font-size: 0.8rem; opacity: 0.7;" data-en="Market Reach"
+                                    data-fr="Portée du Marché" data-es="Alcance del Mercado">Market Reach</div>
+                            </div>
+                        </div>
+                        <div class="tech-tags">
+                            <span class="tech-tag">HTML/CSS</span>
+                            <span class="tech-tag">Firebase</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">AI/ML</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SAIS -->
+                <div class="timeline-item">
+                    <div class="timeline-card glass">
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                            <div>
+                                <h3 class="gradient-text" style="font-size: 1.8rem; font-weight: 700;">SOFTWARE
+                                    APPLICATION AND INFORMATION SOLUTIONS</h3>
+                                <h4 style="font-size: 1.2rem; font-weight: 600; margin: 0.5rem 0;"
+                                    data-en="Fullstack Developer" data-fr="Développeur Full-Stack"
+                                    data-es="Desarrollador Full-Stack">Fullstack Developer</h4>
+                            </div>
+                            <span class="text-muted" style="font-size: 0.9rem;">Dec 2020 - Aug 2021</span>
+                        </div>
+                        <p style="margin-bottom: 1rem;"
+                            data-en="Delivered high-impact solutions that drove measurable business results. Increased customer engagement by 10% and improved user retention through strategic re-architecture."
+                            data-fr="Livré des solutions à fort impact qui ont généré des résultats commerciaux mesurables."
+                            data-es="Entregué soluciones de alto impacto que generaron resultados comerciales medibles.">
+                            Delivered high-impact solutions that drove measurable business results. Increased customer
+                            engagement by 10% and improved user retention through strategic re-architecture.
+                        </p>
+                        <div
+                            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+                            <div
+                                style="text-align: center; padding: 1rem; background: rgba(34, 197, 94, 0.1); border-radius: 10px;">
+                                <div style="font-size: 1.5rem; font-weight: 700; color: #22c55e;">10%</div>
+                                <div style="font-size: 0.8rem; opacity: 0.7;" data-en="Engagement Increase"
+                                    data-fr="Augmentation d'Engagement" data-es="Aumento de Compromiso">Engagement
+                                    Increase</div>
+                            </div>
+                            <div
+                                style="text-align: center; padding: 1rem; background: rgba(34, 197, 94, 0.1); border-radius: 10px;">
+                                <div style="font-size: 1.5rem; font-weight: 700; color: #22c55e;">40%</div>
+                                <div style="font-size: 0.8rem; opacity: 0.7;" data-en="Speed Improvement"
+                                    data-fr="Amélioration de la Vitesse" data-es="Mejora de Velocidad">Speed Improvement
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tech-tags">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Java</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">Spring Boot</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title" data-en="The Proof is in the Product" data-fr="La Preuve est dans le Produit"
+                data-es="La Prueba está en el Producto">
+                The Proof is in the Product
+            </h2>
+            <p class="section-subtitle" data-en="A selection of platforms I've architected to solve complex problems."
+                data-fr="Une sélection de plateformes que j'ai conçues pour résoudre des problèmes complexes."
+                data-es="Una selección de plataformas que he diseñado para resolver problemas complejos.">
+                A selection of platforms I've architected to solve complex problems.
+            </p>
+
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all" data-en="All" data-fr="Tout"
+                    data-es="Todo">All</button>
+                <button class="filter-btn" data-filter="ai" data-en="AI/ML" data-fr="IA/ML"
+                    data-es="IA/ML">AI/ML</button>
+                <button class="filter-btn" data-filter="react">React</button>
+                <button class="filter-btn" data-filter="java">Java</button>
+                <button class="filter-btn" data-filter="mobile" data-en="Mobile" data-fr="Mobile"
+                    data-es="Móvil">Mobile</button>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Jurifica -->
+                <div class="project-card glass" data-tags="ai react nextjs">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                        <h3 style="font-size: 1.5rem; font-weight: 700;">Jurifica</h3>
+                        <span class="text-muted" style="font-size: 0.9rem;">2025</span>
+                    </div>
+                    <p class="text-muted" style="margin-bottom: 1.5rem; font-size: 0.95rem;"
+                        data-en="AI-powered legal compliance platform that transforms global business expansion with intelligent document generation."
+                        data-fr="Plateforme de conformité juridique alimentée par l'IA qui transforme l'expansion commerciale mondiale."
+                        data-es="Plataforma de cumplimiento legal impulsada por IA que transforma la expansión comercial global.">
+                        AI-powered legal compliance platform that transforms global business expansion with intelligent
+                        document generation.
+                    </p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Next.js</span>
+                        <span class="tech-tag">Stripe</span>
+                        <span class="tech-tag">AI/ML</span>
+                    </div>
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem;">
+                        <span style="color: #667eea; font-weight: 600;" data-en="Coming Soon"
+                            data-fr="Bientôt Disponible" data-es="Próximamente">Coming Soon</span>
+                        <i class="fas fa-arrow-right" style="color: #667eea;"></i>
+                    </div>
+                </div>
+
+                <!-- AuroraTV -->
+                <div class="project-card glass" data-tags="javascript firebase">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                        <h3 style="font-size: 1.5rem; font-weight: 700;">AuroraTV</h3>
+                        <span class="text-muted" style="font-size: 0.9rem;">2023</span>
+                    </div>
+                    <p class="text-muted" style="margin-bottom: 1.5rem; font-size: 0.95rem;"
+                        data-en="Multi-region streaming platform supporting global content delivery with secure user management."
+                        data-fr="Plateforme de streaming multi-régions supportant la livraison de contenu mondial."
+                        data-es="Plataforma de streaming multi-región que soporta entrega de contenido global.">
+                        Multi-region streaming platform supporting global content delivery with secure user management.
+                    </p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">HTML/CSS</span>
+                        <span class="tech-tag">Firebase</span>
+                        <span class="tech-tag">JavaScript</span>
+                    </div>
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem;">
+                        <a target="_blank" href="https://github.com/tmotswagole/auroratv"
+                            style="color: #667eea; font-weight: 600; text-decoration: none;" data-en="View Project"
+                            data-fr="Voir le Projet" data-es="Ver Proyecto">View Project</a>
+                        <i class="fas fa-external-link-alt" style="color: #667eea;"></i>
+                    </div>
+                </div>
+
+                <!-- Botswana Life Portal -->
+                <div class="project-card glass" data-tags="react java">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                        <h3 style="font-size: 1.5rem; font-weight: 700;">Botswana Life Portal</h3>
+                        <span class="text-muted" style="font-size: 0.9rem;">2021</span>
+                    </div>
+                    <p class="text-muted" style="margin-bottom: 1.5rem; font-size: 0.95rem;"
+                        data-en="Complete UX overhaul of insurance customer portal, improving engagement and reducing support tickets."
+                        data-fr="Refonte UX complète du portail client d'assurance, améliorant l'engagement."
+                        data-es="Renovación completa de UX del portal de clientes de seguros, mejorando el compromiso.">
+                        Complete UX overhaul of insurance customer portal, improving engagement and reducing support
+                        tickets.
+                    </p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">Spring Boot</span>
+                    </div>
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem;">
+                        <span style="color: #667eea; font-weight: 600;" data-en="Video Demo" data-fr="Démo Vidéo"
+                            data-es="Demo en Video">Video Demo</span>
+                        <i class="fas fa-play video-trigger" style="color: #667eea; cursor: pointer;"></i>
+                    </div>
+
+                    <!-- Video Modal -->
+                    <div class="video-modal">
+                        <div class="video-modal-content">
+                            <span class="close-modal">&times;</span>
+                            <video width="100%" controls>
+                                <source src="./img/customer_portal.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BURS MTax -->
+                <div class="project-card glass" data-tags="java mobile android">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                        <h3 style="font-size: 1.5rem; font-weight: 700;">BURS MTax</h3>
+                        <span class="text-muted" style="font-size: 0.9rem;">2018</span>
+                    </div>
+                    <p class="text-muted" style="margin-bottom: 1.5rem; font-size: 0.95rem;"
+                        data-en="First mobile tax application for Botswana's national revenue service. Over 5,000 downloads."
+                        data-fr="Première application mobile fiscale pour le service national des revenus du Botswana."
+                        data-es="Primera aplicación móvil de impuestos para el servicio nacional de ingresos de Botswana.">
+                        First mobile tax application for Botswana's national revenue service. Over 5,000 downloads.
+                    </p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">Android</span>
+                        <span class="tech-tag">Spring Boot</span>
+                    </div>
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem;">
+                        <a target="_blank"
+                            href="https://play.google.com/store/apps/details?id=com.burs.mtax&pcampaignid=web_share"
+                            style="color: #667eea; font-weight: 600; text-decoration: none;">Play Store</a>
+                        <i class="fas fa-external-link-alt" style="color: #667eea;"></i>
+                    </div>
+                </div>
+
+                <!-- Misha Family Tree -->
+                <div class="project-card glass" data-tags="php threejs">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                        <h3 style="font-size: 1.5rem; font-weight: 700;">Misha Family Tree</h3>
+                        <span class="text-muted" style="font-size: 0.9rem;">2025</span>
+                    </div>
+                    <p class="text-muted" style="margin-bottom: 1.5rem; font-size: 0.95rem;"
+                        data-en="Interactive 3D family tree visualization with modern data exploration capabilities."
+                        data-fr="Visualisation d'arbre généalogique 3D interactif avec capacités d'exploration de données modernes."
+                        data-es="Visualización interactiva de árbol genealógico 3D con capacidades modernas de exploración de datos.">
+                        Interactive 3D family tree visualization with modern data exploration capabilities.
+                    </p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">PHP</span>
+                        <span class="tech-tag">Three.js</span>
+                        <span class="tech-tag">SQL</span>
+                    </div>
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem;">
+                        <a target="_blank" href="https://github.com/tmotswagole/misha"
+                            style="color: #667eea; font-weight: 600; text-decoration: none;" data-en="View Project"
+                            data-fr="Voir le Projet" data-es="Ver Proyecto">View Project</a>
+                        <i class="fas fa-external-link-alt" style="color: #667eea;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recognition Section -->
+    <section id="recognition" class="section section-alt">
+        <div class="container">
+            <h2 class="section-title" data-en="In The Spotlight" data-fr="Sous les Projecteurs"
+                data-es="En el Punto de Mira">
+                In The Spotlight
+            </h2>
+            <p class="section-subtitle"
+                data-en="Validation from some of the world's most respected names in technology and business."
+                data-fr="Validation de certains des noms les plus respectés au monde dans la technologie et les affaires."
+                data-es="Validación de algunos de los nombres más respetados del mundo en tecnología y negocios.">
+                Validation from some of the world's most respected names in technology and business.
+            </p>
+
+            <div class="recognition-grid">
+                <!-- Forbes 30 Under 30 -->
+                <div class="recognition-card glass">
+                    <div style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                        <div
+                            style="width: 80px; height: 80px; background: linear-gradient(135deg, #0F172A, #FFD166); border-radius: 15px; display: flex; align-items: center; justify-content: center; margin-right: 1rem;">
+                            <img src="./img/Forbes-30-under-30.png" alt="Forbes Logo" style="width: 70px; height: 70px;">
+                        </div>
+                        <div>
+                            <h3 style="font-size: 1.3rem; font-weight: 700;">Forbes 30 Under 30</h3>
+                            <p style="opacity: 0.7; font-size: 0.9rem;" data-en="Pitch Competition Winner"
+                                data-fr="Gagnant du Concours de Pitch" data-es="Ganador del Concurso de Pitch">Pitch
+                                Competition Winner</p>
+                        </div>
+                    </div>
+                    <p style="margin-bottom: 1.5rem; font-size: 0.95rem;"
+                        data-en="Honored to win the top pitch prize at the prestigious Forbes 30 Under 30 Africa Summit."
+                        data-fr="Honoré de remporter le prix du meilleur pitch au prestigieux Sommet Forbes 30 Under 30 Afrique."
+                        data-es="Honrado de ganar el premio al mejor pitch en la prestigiosa Cumbre Forbes 30 Under 30 África.">
+                        Honored to win the top pitch prize at the prestigious Forbes 30 Under 30 Africa Summit.
+                    </p>
+                    <a target="_blank"
+                        href="https://www.forbes.com/sites/forbesunder30team/2024/05/06/2024-forbes-under-30-summit-africa/?sh=7872e62d6107"
+                        style="color: #667eea; font-weight: 600; text-decoration: none;" data-en="Read More →"
+                        data-fr="Lire Plus →" data-es="Leer Más →">Read More →</a>
+                </div>
+
+                <!-- Techstars -->
+                <div class="recognition-card glass">
+                    <div style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                        <div
+                            style="width: 80px; height: 80px; background: linear-gradient(135deg, #06B6D4, #34D399); border-radius: 15px; display: flex; align-items: center; justify-content: center; margin-right: 1rem;">
+                            <img src="./img/techstars.jpg" alt="Techstars Logo" style="width: 70px; height: 70px;">
+                        </div>
+                        <div>
+                            <h3 style="font-size: 1.3rem; font-weight: 700;">Techstars</h3>
+                            <p style="opacity: 0.7; font-size: 0.9rem;" data-en="Founder Catalyst"
+                                data-fr="Catalyseur de Fondateur" data-es="Catalizador de Fundador">Founder Catalyst</p>
+                        </div>
+                    </div>
+                    <p style="margin-bottom: 1.5rem; font-size: 0.95rem;"
+                        data-en="Selected for Techstars' elite global founder program, unlocking over $500K in resources."
+                        data-fr="Sélectionné pour le programme d'élite mondial des fondateurs de Techstars."
+                        data-es="Seleccionado para el programa élite global de fundadores de Techstars.">
+                        Selected for Techstars' elite global founder program, unlocking over $500K in resources.
+                    </p>
+                    <a target="_blank"
+                        href="https://www.techstars.com/newsroom/techstars-announces-inaugural-founder-catalyst-al-ahsa-cohort"
+                        style="color: #667eea; font-weight: 600; text-decoration: none;" data-en="Learn More →"
+                        data-fr="En Savoir Plus →" data-es="Saber Más →">Learn More →</a>
+                </div>
+
+                <!-- BARCLAYS EAGLE LABS -->
+                <div class="recognition-card glass">
+                    <div style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                        <div
+                            style="width: 80px; height: 80px; background: linear-gradient(135deg, #052F5F, #8FBFE0); border-radius: 15px; display: flex; align-items: center; justify-content: center; margin-right: 1rem;">
+                            <img src="./img/eagle-labs.png" alt="Barclays Logo" style="width: 70px; height: 70px;">
+                        </div>
+                        <div>
+                            <h3 style="font-size: 1.3rem; font-weight: 700;">Barclays</h3>
+                            <p style="opacity: 0.7; font-size: 0.9rem;" data-en="Inception Program"
+                                data-fr="Programme Inception" data-es="Programa Inception">Eagle Labs</p>
+                        </div>
+                    </div>
+                    <p style="margin-bottom: 1.5rem; font-size: 0.95rem;"
+                        data-en="Accepted into the Barclays Eagle Labs program, a leading ecosystem for founders and innovators supported by one of the world's largest financial institutions."
+                        data-fr="Intégré dans le programme exclusif de Barclays Eagle Labs, un écosystème de premier plan pour les fondateurs et les innovateurs soutenu par l'une des plus grandes institutions financières du monde."
+                        data-es="Aceptado en el programa Barclays Eagle Labs, un ecosistema líder para fundadores e innovadores respaldado por una de las instituciones financieras más grandes del mundo.">
+                        Accepted into the Barclays Eagle Labs program, a leading ecosystem for founders and innovators
+                        supported by one of the world's largest financial institutions.
+                    </p>
+                    <a target="_blank"
+                        href="https://www.linkedin.com/posts/bryonycozens_bcorp-positivechange-creativeagency-activity-7267517842105806848-Nwem?utm_source=share&utm_medium=member_desktop&rcm=ACoAABQzq4wBnecV2a99Fz44ZtcbR_lXmQmHHCA"
+                        style="color: #667eea; font-weight: 600; text-decoration: none;" data-en="View Details →"
+                        data-fr="Voir Détails →" data-es="Ver Detalles →">View Details →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Footer -->
+    <footer id="contact" class="footer">
+        <div class="container">
+            <h2 style="font-size: 3rem; font-weight: 800; text-align: center; margin-bottom: 1rem;"
+                data-en="Let's Build the Future." data-fr="Construisons l'Avenir." data-es="Construyamos el Futuro.">
+                Let's Build the Future.
+            </h2>
+
+            <div class="footer-grid">
+                <div class="footer-item">
+                    <div class="footer-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 0.5rem;" data-en="Email"
+                        data-fr="Email" data-es="Email">Email</h3>
+                    <a target="_blank" href="mailto:tsmotswagole@outlook.com"
+                        style="color: #a78bfa; text-decoration: none;">
+                        tsmotswagole@outlook.com
+                    </a>
+                </div>
+
+                <div class="footer-item">
+                    <div class="footer-icon">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <h3 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 0.5rem;">GitHub</h3>
+                    <a target="_blank" href="https://github.com/tmotswagole"
+                        style="color: #a78bfa; text-decoration: none;">
+                        @tmotswagole
+                    </a>
+                </div>
+
+                <div class="footer-item">
+                    <div class="footer-icon">
+                        <i class="fab fa-linkedin"></i>
+                    </div>
+                    <h3 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 0.5rem;">LinkedIn</h3>
+                    <a target="_blank" href="https://www.linkedin.com/in/thabiso-solomon-motswagole"
+                        style="color: #a78bfa; text-decoration: none;" data-en="Connect" data-fr="Se Connecter"
+                        data-es="Conectar">
+                        Connect
+                    </a>
+                </div>
+
+                <div class="footer-item">
+                    <div class="footer-icon">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <h3 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 0.5rem;">Instagram</h3>
+                    <a target="_blank" href="https://www.instagram.com/wearethabiso"
+                        style="color: #a78bfa; text-decoration: none;">
+                        @wearethabiso
+                    </a>
+                </div>
+            </div>
+
+            <div
+                style="text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 2rem; margin-top: 3rem;">
+                <p style="opacity: 0.7;">© 2025 Thabiso Motswagole. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        /* Video Modal Styles */
+        .video-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .video-modal-content {
+            position: relative;
+            margin: auto;
+            padding: 20px;
+            width: 80%;
+            max-width: 800px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .close-modal {
+            position: absolute;
+            right: 0;
+            top: -30px;
+            color: #fff;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .video-trigger {
+            cursor: pointer;
+        }
+
+        .close-modal:hover {
+            color: #999;
+        }
+    </style>
+
+    <script>
+        // Video Modal functionality
+        const videoModal = document.querySelector('.video-modal');
+        const videoTrigger = document.querySelector('.video-trigger');
+        const closeModal = document.querySelector('.close-modal');
+        const videoElement = document.querySelector('.video-modal video');
+
+        videoTrigger.addEventListener('click', () => {
+            videoModal.style.display = 'block';
+            videoElement.play();
+            videoElement.muted = true;
+        });
+
+        closeModal.addEventListener('click', () => {
+            videoModal.style.display = 'none';
+            videoElement.pause();
+        });
+
+        videoModal.addEventListener('click', (e) => {
+            if (e.target === videoModal) {
+                videoModal.style.display = 'none';
+                videoElement.pause();
+            }
+        });
+
+        // Floating words data
+        const floatingWords = [
+            'Founder', 'CEO', 'Full-Stack Architect', 'Forbes 30 Under 30 Winner',
+            'Techstars Alumnus', 'Product Visionary', 'React Developer', 'Next.js Developer',
+            'Python Developer', 'Java Developer', 'AI-Powered Solutions', 'Enterprise IT Architect',
+            'Innovation Strategy', 'Digital Transformation', 'From Idea to MVP',
+            'Scalable Cloud Systems', 'Secure by Design'
+        ];
+
+        // Theme management
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        const lightIcon = document.querySelector('.theme-icon-light');
+        const darkIcon = document.querySelector('.theme-icon-dark');
+
+        function setTheme(theme) {
+            body.className = theme;
+            localStorage.setItem('theme', theme);
+
+            if (theme === 'dark') {
+                lightIcon.style.display = 'none';
+                darkIcon.style.display = 'block';
+            } else {
+                lightIcon.style.display = 'block';
+                darkIcon.style.display = 'none';
+            }
+        }
+
+        // Load saved theme or default to light
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        setTheme(savedTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = body.className;
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            setTheme(newTheme);
+        });
+
+        // Locale management
+        const localeSelect = document.getElementById('locale-select');
+
+        function setLocale(locale) {
+            const elements = document.querySelectorAll('[data-en]');
+            elements.forEach(element => {
+                const text = element.getAttribute(`data-${locale}`);
+                if (text) {
+                    element.textContent = text;
+                }
+            });
+            localStorage.setItem('locale', locale);
+        }
+
+        // Load saved locale or default to English
+        const savedLocale = localStorage.getItem('locale') || 'en';
+        localeSelect.value = savedLocale;
+        setLocale(savedLocale);
+
+        localeSelect.addEventListener('change', (e) => {
+            setLocale(e.target.value);
+        });
+
+        // Floating words animation
+        const floatingContainer = document.getElementById('floating-words');
+        let wordCount = 0;
+        const maxWords = 8;
+
+        function createFloatingWord() {
+            if (wordCount >= maxWords) return;
+
+            const word = floatingWords[Math.floor(Math.random() * floatingWords.length)];
+            const wordElement = document.createElement('div');
+            wordElement.className = 'floating-word';
+            wordElement.textContent = word;
+
+            // Random position around the center, avoiding the profile image area
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+            const radius = 200 + Math.random() * 300; // Distance from center
+            const angle = Math.random() * Math.PI * 2; // Random angle
+
+            const x = centerX + Math.cos(angle) * radius - 50; // -50 for element width offset
+            const y = centerY + Math.sin(angle) * radius - 20; // -20 for element height offset
+
+            // Ensure words stay within viewport
+            const clampedX = Math.max(20, Math.min(x, window.innerWidth - 120));
+            const clampedY = Math.max(100, Math.min(y, window.innerHeight - 100));
+
+            wordElement.style.left = clampedX + 'px';
+            wordElement.style.top = clampedY + 'px';
+            wordElement.style.animationDelay = Math.random() * 2 + 's';
+
+            floatingContainer.appendChild(wordElement);
+            wordCount++;
+
+            // Remove after animation completes
+            setTimeout(() => {
+                if (wordElement.parentNode) {
+                    wordElement.parentNode.removeChild(wordElement);
+                    wordCount--;
+                }
+            }, 8000);
+        }
+
+        // Create floating words periodically
+        setInterval(createFloatingWord, 1000);
+
+        // Initial floating words
+        setTimeout(() => {
+            for (let i = 0; i < 5; i++) {
+                setTimeout(createFloatingWord, i * 500);
+            }
+        }, 1000);
+
+        // Project filtering
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const filter = button.getAttribute('data-filter');
+
+                // Update active button
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                // Filter projects with animation
+                projectCards.forEach(card => {
+                    const tags = card.getAttribute('data-tags');
+                    const shouldShow = filter === 'all' || (tags && tags.includes(filter));
+
+                    if (shouldShow) {
+                        card.style.display = 'block';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 50);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 100; // Account for fixed nav
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const scrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe timeline items and project cards for scroll animations
+        document.querySelectorAll('.timeline-item, .project-card, .recognition-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+            scrollObserver.observe(el);
+        });
+
+        // Mobile menu functionality
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('show');
+                mobileMenuBtn.classList.toggle('active');
+            });
+        }
+
+        // Parallax effect on scroll
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.floating-word');
+
+            parallaxElements.forEach(el => {
+                const speed = 0.5;
+                el.style.transform += ` translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // Resize handler for floating words
+        window.addEventListener('resize', () => {
+            // Clear existing floating words and recreate them for new viewport
+            floatingContainer.innerHTML = '';
+            wordCount = 0;
+        });
+
+        // Performance optimization: Reduce animations on mobile
+        if (window.innerWidth <= 768) {
+            document.documentElement.style.setProperty('--animation-duration', '0.2s');
+        }
+
+        // Hamburger Menu functionality
+        const hamburgerMenu = document.getElementById('hamburger-menu');
+        const mobileOverlay = document.getElementById('mobile-overlay');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-links a');
+
+        hamburgerMenu.addEventListener('click', () => {
+            hamburgerMenu.classList.toggle('active');
+            mobileOverlay.classList.toggle('active');
+            document.body.style.overflow = mobileOverlay.classList.contains('active') ? 'hidden' : '';
+        });
+
+        // Close menu when clicking on a link
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburgerMenu.classList.remove('active');
+                mobileOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Close menu when clicking outside (on the overlay)
+        mobileOverlay.addEventListener('click', (e) => {
+            if (e.target === mobileOverlay) {
+                hamburgerMenu.classList.remove('active');
+                mobileOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    </script>
+</body>
+
+</html>>
+
+</html>
